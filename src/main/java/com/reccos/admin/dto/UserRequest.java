@@ -2,7 +2,7 @@ package com.reccos.admin.dto;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies.SnakeCaseStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import com.reccos.admin.validators.FieldsAreEquals;
+// import com.reccos.admin.validators.FieldsAreEquals;
 import com.reccos.admin.validators.user.UserEmailIsUnique;
 
 import jakarta.validation.constraints.Email;
@@ -19,7 +19,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonNaming(SnakeCaseStrategy.class)
-@FieldsAreEquals(field = "password", fieldMatch = "passwordConfirmation")
+// @FieldsAreEquals(field = "password", fieldMatch = "passwordConfirmation")
 public class UserRequest {
 
 	@NotNull
@@ -44,10 +44,15 @@ public class UserRequest {
 
 	@NotNull
 	@NotEmpty
+	private String role;
+
+	private Integer federation;
+
+	@NotNull
+	@NotEmpty
 	@Size(min = 6, max = 255)
 	private String password;
 
-	@NotNull(message = "não deve ser nulo")
 	@Size(min = 6, max = 255)
 	private String passwordConfirmation;
 

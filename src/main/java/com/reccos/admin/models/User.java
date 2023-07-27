@@ -45,4 +45,10 @@ public class User extends Auditable {
     @Column(name = "password")
     private String password;
 
+	@Column(name = "role")
+    private String role;
+
+	@Column(name = "federation")
+    private Integer federation;
+
 }

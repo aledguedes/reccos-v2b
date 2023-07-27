@@ -19,7 +19,10 @@ public class UserMapperImpl implements UserMapper {
 	            .name(userRequest.getName())
 	            .email(userRequest.getEmail())
 	            .password(userRequest.getPassword())
+				.img_perfil(userRequest.getImg_perfil())
+				.role(userRequest.getRole())
 	            .status(userRequest.getStatus())
+				.federation(userRequest.getFederation())
 	            .build();
 	}
 
@@ -36,6 +39,9 @@ public class UserMapperImpl implements UserMapper {
 	            .img_perfil(user.getImg_perfil())
 	            .createdAt(user.getCreatedAt())
 	            .updatedAt(user.getUpdatedAt())
+				.role(user.getRole())
+	            .status(user.getStatus())
+				.federation(user.getFederation())
 	            .build();
 	}
 

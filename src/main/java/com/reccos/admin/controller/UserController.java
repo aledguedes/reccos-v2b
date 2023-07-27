@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -26,7 +27,7 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @RequestMapping("/api/user")
 public class UserController {
-	
+
 	private final UserService userService;
 
 	@GetMapping
@@ -38,14 +39,20 @@ public class UserController {
 	public UserResponse userById(@PathVariable Long user_id) {
 		return userService.userById(user_id);
 	}
-	
+
+	@GetMapping(value = "/find")
+	public UserResponse findUserByEmail(
+			@RequestParam(name = "q", required = false, defaultValue = "") String email) {
+		return userService.finduserByEmail(email);
+	}
+
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public UserResponse createUser(@RequestBody @Valid UserRequest userRequest) {
-		System.out.println("DEBUG CONTROLLER "+userRequest.getEmail());
+		System.out.println("DEBUG CONTROLLER " + userRequest.getEmail());
 		return userService.createUser(userRequest);
 	}
-	
+
 	@PutMapping(value = "/{user_id}")
 	public UserResponse updateUser(@RequestBody @Valid UserRequest userRequest,
 			@PathVariable Long user_id) {
@@ -53,7 +60,7 @@ public class UserController {
 	}
 
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	@DeleteMapping(value = "/{federation_id}")
+	@DeleteMapping(value = "/{user_id}")
 	public void deleteUser(@PathVariable Long user_id) {
 		userService.deleteUser(user_id);
 	}

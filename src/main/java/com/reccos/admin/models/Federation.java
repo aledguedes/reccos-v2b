@@ -31,7 +31,7 @@ public class Federation extends Auditable {
 
 	@Column(name = "name")
 	private String name;
-	
+
 	@Column(name = "surname")
 	private String surname;
 

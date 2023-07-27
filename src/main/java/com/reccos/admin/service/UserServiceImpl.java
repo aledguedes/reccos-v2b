@@ -18,38 +18,44 @@ import lombok.RequiredArgsConstructor;
 public class UserServiceImpl implements UserService {
 
 	private final UserMapper userMapper;
-    private final UserRepository userReporitory;
-    
+	private final UserRepository userReporitory;
+
 	@Override
 	public List<UserResponse> listAll() {
 		return userReporitory.findAll()
-                .stream()
-                .map(userMapper::toUserResponse)
-                .toList();
+				.stream()
+				.map(userMapper::toUserResponse)
+				.toList();
 	}
 
 	@Override
 	public UserResponse userById(Long user_id) {
 		return userReporitory.findById(user_id)
 				.map(userMapper::toUserResponse)
-                .orElseThrow(UserNotFoundException::new);
+				.orElseThrow(UserNotFoundException::new);
+	}
+
+	@Override
+	public UserResponse finduserByEmail(String email) {
+		return userReporitory.findByEmail(email)
+				.map(userMapper::toUserResponse)
+				.orElseThrow(UserNotFoundException::new);
 	}
 
 	@Override
 	public UserResponse createUser(UserRequest userRequest) {
-		System.out.println("DEBUG SERVICE");
 		var newUser = userMapper.toUser(userRequest);
-        var createdFederation = userReporitory.save(newUser);
-        return userMapper.toUserResponse(createdFederation);
+		var createdFederation = userReporitory.save(newUser);
+		return userMapper.toUserResponse(createdFederation);
 	}
 
 	@Override
 	public UserResponse updateUser(UserRequest userRequest, Long user_id) {
 		var user = userReporitory.findById(user_id)
-                .orElseThrow(UserNotFoundException::new);
-        BeanUtils.copyProperties(userRequest, user, "id", "email", "password", "createdAt", "updatedAt");
-        var userAtualizado = userReporitory.save(user);
-        return userMapper.toUserResponse(userAtualizado);
+				.orElseThrow(UserNotFoundException::new);
+		BeanUtils.copyProperties(userRequest, user, "id", "email", "password", "createdAt", "updatedAt");
+		var userAtualizado = userReporitory.save(user);
+		return userMapper.toUserResponse(userAtualizado);
 	}
 
 	@Override

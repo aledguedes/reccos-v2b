@@ -18,6 +18,8 @@ public class UserResponse {
 	private String email;
 	private Boolean status;
 	private String img_perfil;
+	private String role;
+	private Integer federation;
 	private LocalDateTime createdAt;
 	private LocalDateTime updatedAt;
 }

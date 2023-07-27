@@ -5,6 +5,7 @@ CREATE TABLE `users` (
     `status` BOOLEAN NOT NULL,
     `img_perfil` VARCHAR(255),
     `password` VARCHAR(255) NOT NULL,
+    `role` VARCHAR(50) NOT NULL,
     `created_at` DATETIME NOT NULL,
     `updated_at` DATETIME NOT NULL
 );
