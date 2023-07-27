@@ -1,0 +1,11 @@
+server:
+  port: ${RECCOS_PORT}
+spring:
+  datasource:
+    username: ${RECCOS_DB_USER}
+    password: ${RECCOS_DB_PASSWORD}
+    url: jdbc:mysql://${RECCOS_DB_HOST}:${RECCOS_DB_PORT}/${RECCOS_DB_NAME}?serverTimezone=UTC
+  jpa:
+    show-sql: false
+    properties:
+      "[format_sql]": false
