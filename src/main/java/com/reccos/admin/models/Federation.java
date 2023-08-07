@@ -2,9 +2,13 @@ package com.reccos.admin.models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.MapsId;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -35,13 +39,15 @@ public class Federation extends Auditable {
 	@Column(name = "surname")
 	private String surname;
 
-	@ToString.Include
-	@Column(name = "email")
-	private String email;
-
 	@Column(name = "status")
-	private Boolean status;
+	private String status;
 
 	@Column(name = "img_logo")
 	private String img_logo;
+
+	@OneToOne(fetch = FetchType.EAGER)
+	@MapsId
+	@JoinColumn(name = "users_id")
+	private User owner;
+
 }

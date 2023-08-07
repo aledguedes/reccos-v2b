@@ -9,7 +9,7 @@ public interface FederationService {
 
 	List<FederationResponse> listAll();
     FederationResponse federationById(Long federationId);
-    FederationResponse createFederation(FederationRequest federationRequest);
+    FederationResponse createFederation(FederationRequest federationRequest, Long user_id);
     FederationResponse updateFederation(FederationRequest federationRequest, Long federation_id);
     void excluirProfessorLogado(Long federation_id);
 }

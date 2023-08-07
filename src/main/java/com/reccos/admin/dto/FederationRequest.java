@@ -29,12 +29,7 @@ public class FederationRequest {
 	private String surname;
 
 	@NotNull
-	@NotEmpty
-	@Size(min = 3, max = 225)
-	private String email;
-
-	@NotNull
-	private Boolean status;
+	private String status;
 
 	@NotNull
 	@NotEmpty

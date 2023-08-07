@@ -1,5 +1,7 @@
 package com.reccos.admin.models;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -32,12 +34,21 @@ public class User extends Auditable {
 	@Column(name = "name")
 	private String name;
 
+	@Column(name = "surname")
+	private String surname;
+
 	@ToString.Include
 	@Column(name = "email")
 	private String email;
 
+	@Column(name = "phone")
+	private String phone;
+
 	@Column(name = "status")
-	private Boolean status;
+	private String status;
+	
+	@Column(name = "birth_date")
+	private LocalDateTime birth_date;
 
 	@Column(name = "img_perfil")
 	private String img_perfil;

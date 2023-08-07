@@ -1,11 +1,15 @@
 package com.reccos.admin.dto;
 
+import java.time.LocalDateTime;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
 import com.fasterxml.jackson.databind.PropertyNamingStrategies.SnakeCaseStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-// import com.reccos.admin.validators.FieldsAreEquals;
-import com.reccos.admin.validators.user.UserEmailIsUnique;
 
 import jakarta.validation.constraints.Email;
+// import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -27,12 +31,22 @@ public class UserRequest {
 	@Size(min = 3, max = 100)
 	private String name;
 
+	@NotNull
+	@NotEmpty
+	@Size(min = 3, max = 100)
+	private String surname;
+
 	@Email
 	@NotNull
 	@NotEmpty
-	@UserEmailIsUnique
+//	@UserEmailIsUnique
 	@Size(min = 3, max = 255)
 	private String email;
+
+	@NotNull
+	@NotEmpty
+	@Size(min = 8, max = 12)
+	private String phone;
 
 	@NotNull
 	@NotEmpty
@@ -40,7 +54,12 @@ public class UserRequest {
 	private String img_perfil;
 
 	@NotNull
-	private Boolean status;
+	private String status;
+	
+	// @Future
+    @NotNull
+    @DateTimeFormat(iso = ISO.DATE_TIME)
+    private LocalDateTime birth_date;
 
 	@NotNull
 	@NotEmpty

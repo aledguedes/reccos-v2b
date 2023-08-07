@@ -15,11 +15,14 @@ public class UserResponse {
 
 	private Long id;
 	private String name;
+	private String surname;
 	private String email;
-	private Boolean status;
+	private String status;
 	private String img_perfil;
 	private String role;
+	private String phone;
 	private Integer federation;
+	private LocalDateTime birth_date;
 	private LocalDateTime createdAt;
 	private LocalDateTime updatedAt;
 }

@@ -39,10 +39,13 @@ public class FederationController {
 		return federationService.federationById(federation_id);
 	}
 
-	@PostMapping
+	@PostMapping(value = "/{user_id}")
 	@ResponseStatus(HttpStatus.CREATED)
-	public FederationResponse createFederation(@RequestBody @Valid FederationRequest federationRequest) {
-		return federationService.createFederation(federationRequest);
+	public FederationResponse createFederation(
+			@RequestBody @Valid FederationRequest federationRequest,
+			@PathVariable Long user_id
+		) {
+		return federationService.createFederation(federationRequest, user_id);
 	}
 
 	@PutMapping(value = "/{federation_id}")
