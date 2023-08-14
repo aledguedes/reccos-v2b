@@ -7,5 +7,5 @@ CREATE TABLE `federations` (
     `created_at` DATETIME NOT NULL,
     `updated_at` DATETIME NOT NULL,
     `users_id` BIGINT,
-    FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
+    CONSTRAINT fk_owner FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
 );

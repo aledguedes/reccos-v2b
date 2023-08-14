@@ -1,6 +1,8 @@
 package com.reccos.admin.models;
 
-import java.util.List;
+import java.time.LocalDateTime;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -9,9 +11,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
-import jakarta.persistence.MapsId;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,12 +25,12 @@ import lombok.ToString;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "federations")
+@Table(name = "leagues")
 @ToString(onlyExplicitlyIncluded = true)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
-public class Federation extends Auditable {
-
-	@Id
+public class League extends Auditable {
+    
+    @Id
 	@ToString.Include
 	@EqualsAndHashCode.Include
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,20 +39,32 @@ public class Federation extends Auditable {
 	@Column(name = "name")
 	private String name;
 
-	@Column(name = "surname")
-	private String surname;
+	@Column(name = "dt_start")
+	private LocalDateTime dt_start;
 
-	@Column(name = "status")
-	private String status;
+	@Column(name = "dt_end")
+	private LocalDateTime dt_end;
 
 	@Column(name = "img_logo")
 	private String img_logo;
 
-	@OneToOne(fetch = FetchType.EAGER)
-	@MapsId
-	@JoinColumn(name = "users_id")
-	private User owner;
+	@Column(name = "league_system")
+	private String league_system;
 
-	@OneToMany(mappedBy = "federation")
-	private List<League> leagues;
+	@Column(name = "league_mode")
+	private String league_mode;
+
+	@Column(name = "qt_group")
+	private Long qt_group;
+
+	@Column(name = "idd_fed")
+    private long idd_fed;
+
+	@Column(name = "status")
+	private String status;
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "federations_id")
+	@JsonIgnore
+	private Federation federation;
 }

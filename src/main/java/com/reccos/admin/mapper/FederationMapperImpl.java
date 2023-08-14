@@ -37,6 +37,7 @@ public class FederationMapperImpl implements FederationMapper {
             .createdAt(federation.getCreatedAt())
             .updatedAt(federation.getUpdatedAt())
             .owner(federation.getOwner())
+            .leagues(federation.getLeagues())
             .build();
 	}
 

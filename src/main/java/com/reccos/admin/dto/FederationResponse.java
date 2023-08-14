@@ -1,7 +1,9 @@
 package com.reccos.admin.dto;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
+import com.reccos.admin.models.League;
 import com.reccos.admin.models.User;
 
 import lombok.AllArgsConstructor;
@@ -21,6 +23,7 @@ public class FederationResponse {
 	private String status;
 	private String img_logo;
 	private User owner;
+	private List<League> leagues;
 	private LocalDateTime createdAt;
 	private LocalDateTime updatedAt;
 }
