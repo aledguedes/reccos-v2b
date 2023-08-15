@@ -2,6 +2,7 @@ package com.reccos.admin.models;
 
 import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -53,6 +54,7 @@ public class Federation extends Auditable {
 	@JoinColumn(name = "users_id")
 	private User owner;
 
-	@OneToMany(mappedBy = "federation")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
+	@JoinColumn(name = "federations_id")
 	private List<League> leagues;
 }

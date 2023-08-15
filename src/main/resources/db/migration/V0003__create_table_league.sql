@@ -6,11 +6,13 @@ CREATE TABLE `leagues` (
     `league_system` VARCHAR(255),
     `league_mode` VARCHAR(255),
     `qt_group` INT,
-    `img_logo` VARCHAR(255),
     `idd_fed` BIGINT,
+    `img_logo` VARCHAR(255),
     `status` VARCHAR(255),
     `federations_id` BIGINT,
     `created_at` DATETIME NOT NULL,
     `updated_at` DATETIME NOT NULL,
     CONSTRAINT fk_federations FOREIGN KEY (federations_id) REFERENCES federations(id)
 );
+
+INSERT INTO FEDERATIONS VALUES (1, 'Liga BemAgro', 'LIBA', 'Ativa', 'photo_1.jpg', '2023-08-15', '2023-08-15', 1);

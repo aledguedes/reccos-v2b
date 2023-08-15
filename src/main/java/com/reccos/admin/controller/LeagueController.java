@@ -35,25 +35,25 @@ public class LeagueController {
     }
 
     @GetMapping(value = "/{league_id}")
-    public LeagueResponse federationById(@PathVariable Long league_id) {
-        return leagueService.federationById(league_id);
+    public LeagueResponse leagueById(@PathVariable Long league_id) {
+        return leagueService.leagueById(league_id);
     }
 
     @PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-    public LeagueResponse createFederation(@RequestBody @Valid LeagueRequest leagueRequest) {
-        return leagueService.createFederation(leagueRequest);
+    public LeagueResponse createLeague(@RequestBody @Valid LeagueRequest leagueRequest) {
+        return leagueService.createLeague(leagueRequest);
     }
 
     @PutMapping(value = "/{league_id}")
-    public LeagueResponse updateFederation(@RequestBody @Valid LeagueRequest leagueRequest, @PathVariable Long league_id) {
-        return leagueService.updateFederation(leagueRequest, league_id);
+    public LeagueResponse updateLeague(@RequestBody @Valid LeagueRequest leagueRequest, @PathVariable Long league_id) {
+        return leagueService.updateLeague(leagueRequest, league_id);
     }
 
     @ResponseStatus(HttpStatus.NO_CONTENT)
 	@DeleteMapping(value = "/{league_id}")
-    public void excluirProfessorLogado(@PathVariable Long league_id) {
-        leagueService.excluirProfessorLogado(league_id);
+    public void deleteLeague(@PathVariable Long league_id) {
+        leagueService.deleteLeague(league_id);
     }
 
     

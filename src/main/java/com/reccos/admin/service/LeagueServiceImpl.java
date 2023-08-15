@@ -4,9 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
+
 import com.reccos.admin.dto.LeagueRequest;
 import com.reccos.admin.dto.LeagueResponse;
-import com.reccos.admin.exceptions.core.FederationNotFoundException;
+import com.reccos.admin.exceptions.core.LeagueNotFoundException;
 import com.reccos.admin.exceptions.core.UserNotFoundException;
 import com.reccos.admin.mapper.LeagueMapper;
 import com.reccos.admin.repository.FederationRepository;
@@ -31,15 +32,15 @@ public class LeagueServiceImpl implements LeagueService {
     }
 
     @Override
-    public LeagueResponse federationById(Long league_id) {
+    public LeagueResponse leagueById(Long league_id) {
         return leagueRepository
                 .findById(league_id)
                 .map(leagueMapper::toLeagueResponse)
-                .orElseThrow(FederationNotFoundException::new);
+                .orElseThrow(LeagueNotFoundException::new);
     }
 
     @Override
-    public LeagueResponse createFederation(LeagueRequest leagueRequest) {
+    public LeagueResponse createLeague(LeagueRequest leagueRequest) {
         var federation = federationRepository
                 .findById(leagueRequest.getIdd_fed())
                 .orElseThrow(UserNotFoundException::new);
@@ -50,16 +51,16 @@ public class LeagueServiceImpl implements LeagueService {
     }
 
     @Override
-    public LeagueResponse updateFederation(LeagueRequest leagueRequest, Long league_id) {
+    public LeagueResponse updateLeague(LeagueRequest leagueRequest, Long league_id) {
         var league = leagueRepository
                 .findById(league_id)
                 .orElseThrow(UserNotFoundException::new);
-        BeanUtils.copyProperties(leagueRequest, league, "id", "id_federation", "qt_group", "createdAt", "updatedAt");
+        BeanUtils.copyProperties(leagueRequest, league, "id", "idd_fed", "qt_group", "createdAt", "updatedAt");
         return leagueMapper.toLeagueResponse(league);
     }
 
     @Override
-    public void excluirProfessorLogado(Long league_id) {
+    public void deleteLeague(Long league_id) {
         leagueRepository.deleteById(league_id);
     }
 

@@ -50,11 +50,9 @@ public class LeagueRequest {
     private String league_mode;
 
     @NotNull
-    @NotEmpty
     private Long qt_group;
 
     @NotNull
-    @NotEmpty
     private Long idd_fed;
 
     @NotNull

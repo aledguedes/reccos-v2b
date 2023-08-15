@@ -34,6 +34,7 @@ public class LeagueMapperImpl implements LeagueMapper {
         }
 
         return LeagueResponse.builder()
+        		.id(league.getId())
                 .name(league.getName())
                 .status(league.getStatus())
                 .img_logo(league.getImg_logo())

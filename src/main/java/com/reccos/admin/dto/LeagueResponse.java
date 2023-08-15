@@ -13,13 +13,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class LeagueResponse {
     
+	private Long id;
     private String name;
     private String status;
     private String img_logo;
     private String league_mode;
     private String league_system;
-    private Long qt_group;
-    private Long idd_fed;
     private LocalDateTime dt_start;
     private LocalDateTime dt_end;
 	private LocalDateTime createdAt;
