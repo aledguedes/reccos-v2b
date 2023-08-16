@@ -2,6 +2,8 @@ package com.reccos.admin.dto;
 
 import java.time.LocalDateTime;
 
+import com.reccos.admin.models.Federation;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,5 +27,5 @@ public class RefreeResponse {
     private String img_refree;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-
+    private Federation federation;
 }

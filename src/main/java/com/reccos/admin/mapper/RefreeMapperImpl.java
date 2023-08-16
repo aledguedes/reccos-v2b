@@ -33,6 +33,7 @@ public class RefreeMapperImpl implements RefreeMapper {
             return null;
         }
         return RefreeResponse.builder()
+        		.id(refree.getId())
                 .name(refree.getName())
                 .surname(refree.getSurname())
                 .birth_date(refree.getBirth_date())
@@ -42,6 +43,7 @@ public class RefreeMapperImpl implements RefreeMapper {
                 .registered_federation(refree.getRegistered_federation())
                 .cpf(refree.getCpf())
                 .rg(refree.getRg())
+                .federation(refree.getFederation())
 	            .createdAt(refree.getCreatedAt())
 	            .updatedAt(refree.getUpdatedAt())
                 .build();

@@ -2,11 +2,17 @@ package com.reccos.admin.models;
 
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,7 +26,7 @@ import lombok.ToString;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "leagues")
+@Table(name = "refrees")
 @ToString(onlyExplicitlyIncluded = true)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
 public class Refree extends Auditable {
@@ -40,9 +46,9 @@ public class Refree extends Auditable {
     @Column(name = "status")
     private String status;
 
-	@ToString.Include
-	@Column(name = "email")
-	private String email;
+    @ToString.Include
+    @Column(name = "email")
+    private String email;
 
     @Column(name = "cpf")
     private String cpf;
@@ -58,4 +64,10 @@ public class Refree extends Auditable {
 
     @Column(name = "img_refree")
     private String img_refree;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "federations_id", nullable = false)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    // @JsonIgnore
+    private Federation federation;
 }

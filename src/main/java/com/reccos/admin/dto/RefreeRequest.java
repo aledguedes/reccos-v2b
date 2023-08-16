@@ -3,6 +3,8 @@ package com.reccos.admin.dto;
 import java.time.LocalDateTime;
 
 import org.hibernate.validator.constraints.br.CPF;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies.SnakeCaseStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
@@ -56,7 +58,7 @@ public class RefreeRequest {
     private String rg;
 
     @NotNull
-    @NotEmpty
+    @DateTimeFormat(iso = ISO.DATE_TIME)
     private LocalDateTime birth_date;
 
     @NotNull
