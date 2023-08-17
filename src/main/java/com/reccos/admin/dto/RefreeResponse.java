@@ -2,6 +2,7 @@ package com.reccos.admin.dto;
 
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.reccos.admin.models.Federation;
 
 import lombok.AllArgsConstructor;
@@ -27,5 +28,6 @@ public class RefreeResponse {
     private String img_refree;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
+	@JsonIgnoreProperties({"owner", "leagues"})
     private Federation federation;
 }

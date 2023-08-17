@@ -1,6 +1,9 @@
 package com.reccos.admin.models;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -57,4 +60,8 @@ public class Federation extends Auditable {
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
 	@JoinColumn(name = "federations_id")
 	private List<League> leagues;
+	
+	@OneToMany(mappedBy = "federation", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonIgnore
+    private List<Refree> refrees = new ArrayList<>();
 }

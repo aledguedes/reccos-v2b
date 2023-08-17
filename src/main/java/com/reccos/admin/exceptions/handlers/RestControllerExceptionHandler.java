@@ -2,6 +2,7 @@ package com.reccos.admin.exceptions.handlers;
 
 import java.time.LocalDateTime;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -23,4 +24,14 @@ public class RestControllerExceptionHandler extends ResponseEntityExceptionHandl
 				.timestamp(LocalDateTime.now()).build();
 		return new ResponseEntity<ErrorResponse>(body, status);
 	}
+	
+	@ExceptionHandler(DataIntegrityViolationException.class)
+    public ResponseEntity<ErrorResponse> handleDataIntegrityViolation(DataIntegrityViolationException exception,
+            WebRequest request) {
+        var status = HttpStatus.CONFLICT;
+        var body = ErrorResponse.builder().status(status.value()).error(status.getReasonPhrase())
+                .message("O e-mail informado já cadastrado.").cause(exception.getClass().getSimpleName())
+                .timestamp(LocalDateTime.now()).build();
+        return new ResponseEntity<>(body, status);
+    }
 }

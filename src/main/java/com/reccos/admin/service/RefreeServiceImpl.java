@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 import com.reccos.admin.dto.RefreeRequest;
 import com.reccos.admin.dto.RefreeResponse;
 import com.reccos.admin.exceptions.core.RefreeNotFoundException;
+import com.reccos.admin.exceptions.core.UserNotFoundException;
 import com.reccos.admin.mapper.RefreeMapper;
+import com.reccos.admin.repository.FederationRepository;
 import com.reccos.admin.repository.RefreeRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -19,6 +21,7 @@ public class RefreeServiceImpl implements RefreeService {
 
     private final RefreeMapper refreeMapper;
     private final RefreeRepository refreeRepository;
+    private final FederationRepository federationRepository;
 
     @Override
     public List<RefreeResponse> listAll() {
@@ -37,7 +40,11 @@ public class RefreeServiceImpl implements RefreeService {
 
     @Override
     public RefreeResponse createRefree(RefreeRequest refreeRequest) {
+    	var federation = federationRepository
+                .findById(refreeRequest.getRegistered_federation())
+                .orElseThrow(UserNotFoundException::new);
         var newRefree = refreeMapper.toRefree(refreeRequest);
+        newRefree.setFederation(federation);
         var createdRefree = refreeRepository.save(newRefree);
         return refreeMapper.toRefreeResponse(createdRefree);
     }
@@ -46,7 +53,7 @@ public class RefreeServiceImpl implements RefreeService {
     public RefreeResponse updateRefree(RefreeRequest refreeRequest, Long refree_id) {
         var refree = refreeRepository.findById(refree_id)
                 .orElseThrow(RefreeNotFoundException::new);
-        BeanUtils.copyProperties(refreeRequest, refree, "id", "createdAt", "updatedAt");
+        BeanUtils.copyProperties(refreeRequest, refree, "id", "email", "federation", "createdAt", "updatedAt");
         var refreeUpdate = refreeRepository.save(refree);
         return refreeMapper.toRefreeResponse(refreeUpdate);
     }

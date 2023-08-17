@@ -14,5 +14,5 @@ CREATE TABLE `refrees` (
     `federations_id` BIGINT,
     FOREIGN KEY (`federations_id`) REFERENCES `federations`(`id`) ON DELETE CASCADE
 );
-
+INSERT INTO REFREES VALUES (1, 'Oscar Roberto Goddoy', 'Goddoy', 'ATIVO', 'orob_goddoy@mail.com', 'img_refree.png', '1980-03-03', 1, '592.633.090-43', '282838132', '2023-08-16', '2023-08-16', 1);
 -- INSERT INTO REFREES  VALUES(1, 'Oscar Larionda', 'Oscar', 'oscar@email.com', 'ativo', 'phot.jpg', '1980-12-12', 1, '30890561869', '282838132', '2023-08-15', '2023-08-15', 1);
