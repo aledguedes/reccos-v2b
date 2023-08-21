@@ -25,10 +25,10 @@ import lombok.ToString;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "refrees")
+@Table(name = "teams")
 @ToString(onlyExplicitlyIncluded = true)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
-public class Refree extends Auditable {
+public class Team extends Auditable {
 
 	@Id
 	@ToString.Include
@@ -42,18 +42,11 @@ public class Refree extends Auditable {
 	@Column(name = "surname")
 	private String surname;
 
+	@Column(name = "acronym")
+	private String acronym;
+
 	@Column(name = "status")
 	private String status;
-
-	@ToString.Include
-	@Column(name = "email")
-	private String email;
-
-	@Column(name = "cpf")
-	private String cpf;
-
-	@Column(name = "rg")
-	private String rg;
 
 	@Column(name = "birth_date")
 	private LocalDateTime birth_date;

@@ -63,5 +63,11 @@ public class Federation extends Auditable {
 	
 	@OneToMany(mappedBy = "federation", cascade = CascadeType.ALL, orphanRemoval = true)
 	@JsonIgnore
+	@Builder.Default
     private List<Refree> refrees = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "federation", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonIgnore
+	@Builder.Default
+    private List<Team> teams = new ArrayList<>();
 }

@@ -14,14 +14,12 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class RefreeResponse {
+public class TeamResponse {
 
     private Long id;
     private String name;
-    private String rg;
-    private String cpf;
-    private String email;
     private String status;
+    private String acronym;
     private String surname;
     private LocalDateTime birth_date;
     private Long registered_federation;

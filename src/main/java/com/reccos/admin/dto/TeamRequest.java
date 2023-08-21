@@ -2,14 +2,12 @@ package com.reccos.admin.dto;
 
 import java.time.LocalDateTime;
 
-import org.hibernate.validator.constraints.br.CPF;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.format.annotation.DateTimeFormat.ISO;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies.SnakeCaseStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -23,7 +21,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @JsonNaming(SnakeCaseStrategy.class)
-public class RefreeRequest {
+public class TeamRequest {
 
     @NotNull
     @NotEmpty
@@ -35,27 +33,15 @@ public class RefreeRequest {
     @Size(min = 3, max = 100)
     private String surname;
 
-    @Email
     @NotNull
     @NotEmpty
-    @Size(min = 3, max = 255)
-    private String email;
+    @Size(min = 3, max = 15)
+    private String acronym;
 
     @NotNull
     @NotEmpty
     @Size(min = 3, max = 50)
     private String status;
-
-    @NotNull
-    @NotEmpty
-    @Size(min = 3, max = 25)
-    @CPF(message = "cpf inválido")
-    private String cpf;
-
-    @NotNull
-    @NotEmpty
-    @Size(min = 3, max = 15)
-    private String rg;
 
     @NotNull
     @DateTimeFormat(iso = ISO.DATE_TIME)
