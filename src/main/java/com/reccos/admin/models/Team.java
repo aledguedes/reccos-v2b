@@ -61,4 +61,9 @@ public class Team extends Auditable {
 	@JoinColumn(name = "federations_id")
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	private Federation federation;
+
+	@ManyToOne
+	@JoinColumn(name = "stadium_id")
+	@OnDelete(action = OnDeleteAction.CASCADE)
+	private Stadium stadium;
 }

@@ -7,10 +7,12 @@ import org.springframework.stereotype.Service;
 
 import com.reccos.admin.dto.TeamRequest;
 import com.reccos.admin.dto.TeamResponse;
+import com.reccos.admin.exceptions.core.StadiumNotFoundException;
 import com.reccos.admin.exceptions.core.TeamNotFoundException;
 import com.reccos.admin.exceptions.core.UserNotFoundException;
 import com.reccos.admin.mapper.TeamMapper;
 import com.reccos.admin.repository.FederationRepository;
+import com.reccos.admin.repository.StadiumRepository;
 import com.reccos.admin.repository.TeamRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -21,6 +23,7 @@ public class TeamServiceImpl implements TeamService {
 
     private final TeamMapper teamMapper;
     private final TeamRepository teamRepository;
+    private final StadiumRepository stadiumRepository;
     private final FederationRepository federationRepository;
 
     @Override
@@ -62,5 +65,20 @@ public class TeamServiceImpl implements TeamService {
     public void deleteTeam(Long team_id) {
         teamRepository.deleteById(team_id);
     }
+
+	@Override
+	public TeamResponse linkStaduimTeam(Long team_id, Long stadium_id) {
+		var stadium = stadiumRepository
+                .findById(stadium_id)
+                .orElseThrow(StadiumNotFoundException::new);
+
+        var team = teamRepository
+                .findById(team_id)
+                .orElseThrow(StadiumNotFoundException::new);
+        team.setStadium(stadium);
+        System.out.println("DEBUG SERVICE ID_TEAM: " + team.getName());
+        System.out.println("DEBUG SERVICE ID_STADIUM: " + stadium.getName());
+		return teamMapper.toTeamResponse(teamRepository.save(team));
+	}
 
 }

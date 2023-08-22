@@ -10,6 +10,7 @@ public interface TeamService {
 	List<TeamResponse> listAll();
     void deleteTeam(Long team_id);
     TeamResponse TeamById(Long team_id);
+    TeamResponse linkStaduimTeam(Long team_id, Long stadium_id);
     TeamResponse createTeam(TeamRequest teamRequest);
     TeamResponse updateTeam(TeamRequest teamRequest, Long team_id);
 }

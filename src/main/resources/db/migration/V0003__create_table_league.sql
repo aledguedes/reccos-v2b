@@ -8,7 +8,7 @@ CREATE TABLE `leagues` (
     `qt_group` INT,
     `idd_fed` BIGINT,
     `img_logo` VARCHAR(255),
-    `status` VARCHAR(255),
+    `status` VARCHAR(50),
     `federations_id` BIGINT,
     `created_at` DATETIME NOT NULL,
     `updated_at` DATETIME NOT NULL,

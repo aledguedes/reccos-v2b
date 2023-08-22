@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.reccos.admin.models.Federation;
+import com.reccos.admin.models.Stadium;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -26,6 +27,9 @@ public class TeamResponse {
     private String picture_profile;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;
-	@JsonIgnoreProperties({"owner", "leagues"})
+
+    @JsonIgnoreProperties({ "owner", "leagues" })
     private Federation federation;
+
+    private Stadium stadium;
 }

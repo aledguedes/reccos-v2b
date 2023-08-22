@@ -39,6 +39,11 @@ public class TeamController {
         return teamService.TeamById(team_id);
     }
 
+    @GetMapping(value = "/{team_id}/link_stadium/{stadium_id}")
+    public TeamResponse linkStaduimTeam(@PathVariable Long team_id, @PathVariable Long stadium_id) {
+        return teamService.linkStaduimTeam(team_id, stadium_id);
+    }
+
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public TeamResponse createTeam(@RequestBody @Valid TeamRequest teamRequest) {
