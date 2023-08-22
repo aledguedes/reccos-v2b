@@ -76,8 +76,6 @@ public class TeamServiceImpl implements TeamService {
                 .findById(team_id)
                 .orElseThrow(StadiumNotFoundException::new);
         team.setStadium(stadium);
-        System.out.println("DEBUG SERVICE ID_TEAM: " + team.getName());
-        System.out.println("DEBUG SERVICE ID_STADIUM: " + stadium.getName());
 		return teamMapper.toTeamResponse(teamRepository.save(team));
 	}
 
