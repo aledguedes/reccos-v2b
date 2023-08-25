@@ -43,6 +43,9 @@ public class League extends Auditable {
 
 	@Column(name = "img_logo")
 	private String img_logo;
+	
+	@Column(name = "location")
+	private String location;
 
 	@Column(name = "league_system")
 	private String league_system;

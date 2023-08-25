@@ -29,6 +29,11 @@ public class LeagueRequest {
     @Size(min = 3, max = 100)
     private String name;
 
+    @NotNull
+    @NotEmpty
+    @Size(min = 1, max = 150)
+    private String location;
+
     @Future
     @NotNull
     @DateTimeFormat(iso = ISO.DATE_TIME)

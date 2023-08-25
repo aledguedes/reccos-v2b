@@ -26,10 +26,10 @@ CREATE TABLE `teams` (
 );
 
 -- STADIUM
-INSERT INTO STADIUM VALUES(1, 'Estádio Dr. Oswaldo Scatena', 'Scatenão', 'Ativo', 'staduim/scatenao.png', '2023-08-16', '2023-08-16');
+INSERT INTO STADIUM VALUES(1, 'Estádio Dr. Oswaldo Scatena', 'Scatenão', 'Ativo', 'stadium/default.jpg', '2023-08-16', '2023-08-16');
 
 -- TEAMS
-INSERT INTO TEAMS VALUES(1, 'Lango Lango Futebol Clube', 'Lango Lanho', 'LLFC', 'ATIVO', 'picture_profile.png', '1980-03-03', 1, '2023-08-16', '2023-08-16', 1, 1);
+INSERT INTO TEAMS VALUES(1, 'Lango Lango Futebol Clube', 'Lango Lanho', 'LLFC', 'ATIVO', 'team/default.png', '1919-03-03', 1, '2023-08-16', '2023-08-16', 1, 1);
 
 
 

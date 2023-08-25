@@ -16,6 +16,7 @@ public class LeagueResponse {
 	private Long id;
     private String name;
     private String status;
+    private String location;
     private String img_logo;
     private String league_mode;
     private String league_system;
