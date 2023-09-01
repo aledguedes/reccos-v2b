@@ -54,9 +54,10 @@ public class LeagueServiceImpl implements LeagueService {
     public LeagueResponse updateLeague(LeagueRequest leagueRequest, Long league_id) {
         var league = leagueRepository
                 .findById(league_id)
-                .orElseThrow(UserNotFoundException::new);
+                .orElseThrow(LeagueNotFoundException::new);
         BeanUtils.copyProperties(leagueRequest, league, "id", "idd_fed", "qt_group", "createdAt", "updatedAt");
-        return leagueMapper.toLeagueResponse(league);
+        var updatedLeague = leagueRepository.save(league);
+        return leagueMapper.toLeagueResponse(updatedLeague);
     }
 
     @Override

@@ -23,7 +23,6 @@ public class TeamResponse {
     private String acronym;
     private String surname;
     private LocalDateTime birth_date;
-    private Long registered_federation;
     private String picture_profile;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

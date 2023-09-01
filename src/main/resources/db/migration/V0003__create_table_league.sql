@@ -17,4 +17,4 @@ CREATE TABLE `leagues` (
 );
 
 INSERT INTO LEAGUES VALUES(1, 'LIGA_A', '2023-09-01', '2024-09-01', 'Batatais/SP',
-	'Pontos Corridos', 'Canindé', 1, 1, 'league/default.png', 'Ativo', 1, '2023-08-16', '2023-08-16');
+	'Pontos Corridos', 'Canindé', 1, 1, 'league/default.png', 'ATIVO', 1, '2023-08-16', '2023-08-16');

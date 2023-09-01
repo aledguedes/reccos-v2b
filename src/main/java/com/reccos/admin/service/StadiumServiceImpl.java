@@ -52,7 +52,8 @@ public class StadiumServiceImpl implements StadiumService {
 	public StadiumResponse updateRefree(StadiumRequest stadiumRequest, Long stadium_id) {
 		var stadium = stadiumRepository.findById(stadium_id).orElseThrow(StadiumNotFoundException::new);
 		BeanUtils.copyProperties(stadiumRequest, stadium, "id", "createdAt", "updatedAt");
-		return stadiumMapper.toStadiumResponse(stadium);
+		var updatedstadium = stadiumRepository.save(stadium);
+		return stadiumMapper.toStadiumResponse(updatedstadium);
 	}
 
 	@Override

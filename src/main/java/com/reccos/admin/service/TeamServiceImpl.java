@@ -57,8 +57,8 @@ public class TeamServiceImpl implements TeamService {
         var refree = teamRepository.findById(team_id)
                 .orElseThrow(TeamNotFoundException::new);
         BeanUtils.copyProperties(teamRequest, refree, "id", "email", "federation", "createdAt", "updatedAt");
-        var refreeUpdate = teamRepository.save(refree);
-        return teamMapper.toTeamResponse(refreeUpdate);
+        var updatedRefree = teamRepository.save(refree);
+        return teamMapper.toTeamResponse(updatedRefree);
     }
 
     @Override

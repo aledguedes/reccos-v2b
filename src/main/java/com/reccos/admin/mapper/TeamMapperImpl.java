@@ -38,7 +38,6 @@ public class TeamMapperImpl implements TeamMapper {
                 .birth_date(team.getBirth_date())
                 .status(team.getStatus())
                 .picture_profile(team.getPicture_profile())
-                .registered_federation(team.getRegistered_federation())
                 .federation(team.getFederation())
                 .stadium(team.getStadium())
 	            .createdAt(team.getCreatedAt())

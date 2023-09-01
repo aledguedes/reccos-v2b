@@ -36,6 +36,7 @@ public class FederationMapperImpl implements FederationMapper {
             .img_logo(federation.getImg_logo())
             .createdAt(federation.getCreatedAt())
             .updatedAt(federation.getUpdatedAt())
+            .teams(federation.getTeams())
             .owner(federation.getOwner())
             .leagues(federation.getLeagues())
             .build();

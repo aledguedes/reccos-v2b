@@ -26,35 +26,35 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @RequestMapping("/api/league")
 public class LeagueController {
-    
-    private final LeagueService leagueService;
 
-    @GetMapping
-    public List<LeagueResponse> listAll() {
-        return leagueService.listAll();
-    }
+	private final LeagueService leagueService;
 
-    @GetMapping(value = "/{league_id}")
-    public LeagueResponse leagueById(@PathVariable Long league_id) {
-        return leagueService.leagueById(league_id);
-    }
+	@GetMapping
+	public List<LeagueResponse> listAll() {
+		return leagueService.listAll();
+	}
 
-    @PostMapping
+	@GetMapping(value = "/{league_id}")
+	public LeagueResponse leagueById(@PathVariable Long league_id) {
+		return leagueService.leagueById(league_id);
+	}
+
+	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-    public LeagueResponse createLeague(@RequestBody @Valid LeagueRequest leagueRequest) {
-        return leagueService.createLeague(leagueRequest);
-    }
+	public LeagueResponse createLeague(@RequestBody @Valid LeagueRequest leagueRequest) {
+		return leagueService.createLeague(leagueRequest);
+	}
 
-    @PutMapping(value = "/{league_id}")
-    public LeagueResponse updateLeague(@RequestBody @Valid LeagueRequest leagueRequest, @PathVariable Long league_id) {
-        return leagueService.updateLeague(leagueRequest, league_id);
-    }
+	@PutMapping(value = "/{league_id}")
+	public LeagueResponse updateLeague(@RequestBody @Valid LeagueRequest leagueRequest, @PathVariable Long league_id) {
+		var leagueReturn = leagueService.updateLeague(leagueRequest, league_id);
+		return leagueReturn;
+	}
 
-    @ResponseStatus(HttpStatus.NO_CONTENT)
+	@ResponseStatus(HttpStatus.NO_CONTENT)
 	@DeleteMapping(value = "/{league_id}")
-    public void deleteLeague(@PathVariable Long league_id) {
-        leagueService.deleteLeague(league_id);
-    }
+	public void deleteLeague(@PathVariable Long league_id) {
+		leagueService.deleteLeague(league_id);
+	}
 
-    
 }
