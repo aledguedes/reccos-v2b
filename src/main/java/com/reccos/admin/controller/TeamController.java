@@ -43,6 +43,11 @@ public class TeamController {
     public TeamResponse linkStaduimTeam(@PathVariable Long team_id, @PathVariable Long stadium_id) {
         return teamService.linkStaduimTeam(team_id, stadium_id);
     }
+    
+    @GetMapping(value = "find/by-federation/{federation_id}")
+    public List<TeamResponse> teamsByFederation(@PathVariable Long federation_id) {
+        return teamService.getTeamsByFederation(federation_id);
+    }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)

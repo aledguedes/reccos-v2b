@@ -27,40 +27,45 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/api/stadium")
 public class StadiumController {
 
-    private final StadiumService stadiumService;
+	private final StadiumService stadiumService;
 
-    @GetMapping
-    public List<StadiumResponse> listAll() {
-        return stadiumService.listAll();
-    }
+	@GetMapping
+	public List<StadiumResponse> listAll() {
+		return stadiumService.listAll();
+	}
 
-    @GetMapping(value = "/{stadium_id}")
-    public StadiumResponse StadiumById(@PathVariable Long stadium_id) {
-        return stadiumService.StadiumById(stadium_id);
-    }
+	@GetMapping(value = "/{stadium_id}")
+	public StadiumResponse StadiumById(@PathVariable Long stadium_id) {
+		return stadiumService.StadiumById(stadium_id);
+	}
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public StadiumResponse createRefree(@RequestBody @Valid final StadiumRequest stadiumRequest) {
-        return stadiumService.createRefree(stadiumRequest);
-    }
+	@GetMapping(value = "find/by-federation/{federation_id}")
+	public List<StadiumResponse> stadiumByFederation(@PathVariable Long federation_id) {
+		return stadiumService.getStadiumByFederation(federation_id);
+	}
 
-    @PostMapping(value = "/link_team/{team_id}")
-    public StadiumResponse createWithTeam(@RequestBody @Valid final StadiumRequest stadiumRequest,
-            @PathVariable Long team_id) {
-        return stadiumService.createWithTeam(stadiumRequest, team_id);
-    }
+	@PostMapping
+	@ResponseStatus(HttpStatus.CREATED)
+	public StadiumResponse createRefree(@RequestBody @Valid final StadiumRequest stadiumRequest) {
+		return stadiumService.createRefree(stadiumRequest);
+	}
 
-    @PutMapping(value = "/{stadium_id}")
-    public StadiumResponse updateRefree(@RequestBody @Valid final StadiumRequest stadiumRequest,
-            @PathVariable Long stadium_id) {
-        return stadiumService.updateRefree(stadiumRequest, stadium_id);
-    }
+	@PostMapping(value = "/link_team/{team_id}")
+	public StadiumResponse createWithTeam(@RequestBody @Valid final StadiumRequest stadiumRequest,
+			@PathVariable Long team_id) {
+		return stadiumService.createWithTeam(stadiumRequest, team_id);
+	}
 
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @DeleteMapping(value = "/{stadium_id}")
-    public void deleteRefree(@PathVariable Long stadium_id) {
-        stadiumService.deleteRefree(stadium_id);
-    }
+	@PutMapping(value = "/{stadium_id}")
+	public StadiumResponse updateRefree(@RequestBody @Valid final StadiumRequest stadiumRequest,
+			@PathVariable Long stadium_id) {
+		return stadiumService.updateRefree(stadiumRequest, stadium_id);
+	}
+
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	@DeleteMapping(value = "/{stadium_id}")
+	public void deleteRefree(@PathVariable Long stadium_id) {
+		stadiumService.deleteRefree(stadium_id);
+	}
 
 }

@@ -79,4 +79,15 @@ public class TeamServiceImpl implements TeamService {
 		return teamMapper.toTeamResponse(teamRepository.save(team));
 	}
 
+	@Override
+	public List<TeamResponse> getTeamsByFederation(Long federation_id) {
+		var federation = federationRepository
+                .findById(federation_id)
+                .orElseThrow(UserNotFoundException::new);
+		return teamRepository.findByFederation(federation)
+				.stream()
+                .map(teamMapper::toTeamResponse)
+                .toList();
+	}
+
 }

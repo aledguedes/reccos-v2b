@@ -8,9 +8,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
@@ -30,24 +33,32 @@ import lombok.ToString;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
 public class Stadium extends Auditable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @Column(name = "name")
-    private String name;
+	@Column(name = "name")
+	private String name;
 
-    @Column(name = "surname")
-    private String surname;
+	@Column(name = "surname")
+	private String surname;
 
 	@Column(name = "status")
 	private String status;
 
-    @Column(name = "picture_profile")
-    private String picture_profile;
+	@Column(name = "idd_fed")
+	private Long idd_fed;
 
-    @OneToMany(mappedBy = "stadium", cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnore
-    @Builder.Default
-    private List<Team> teams = new ArrayList<>();
+	@Column(name = "picture_profile")
+	private String picture_profile;
+
+	@OneToMany(mappedBy = "stadium", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonIgnore
+	@Builder.Default
+	private List<Team> teams = new ArrayList<>();
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "federations_id")
+	@JsonIgnore
+	private Federation federation;
 }

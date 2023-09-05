@@ -17,12 +17,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @JsonNaming(SnakeCaseStrategy.class)
 public class FederationRequest {
-	
+
 	@NotNull
 	@NotEmpty
 	@Size(min = 3, max = 100)
 	private String name;
-	
+
 	@NotNull
 	@NotEmpty
 	@Size(min = 3, max = 100)

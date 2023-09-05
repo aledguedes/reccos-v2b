@@ -20,6 +20,7 @@ public class StadiumMapperImpl implements StadiumMapper {
                 .surname(stadiumRequest.getSurname())
                 .status(stadiumRequest.getStatus())
                 .picture_profile(stadiumRequest.getPicture_profile())
+                .idd_fed(stadiumRequest.getIdd_fed())
                 .build();
     }
 

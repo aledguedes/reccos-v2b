@@ -70,4 +70,9 @@ public class Federation extends Auditable {
 	@JsonIgnore
 	@Builder.Default
     private List<Team> teams = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "federation", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonIgnore
+	@Builder.Default
+    private List<Stadium> stadium = new ArrayList<>();
 }

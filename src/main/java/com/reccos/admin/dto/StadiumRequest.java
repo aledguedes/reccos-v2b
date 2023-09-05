@@ -18,23 +18,26 @@ import lombok.NoArgsConstructor;
 @JsonNaming(SnakeCaseStrategy.class)
 public class StadiumRequest {
 
-    @NotNull
-    @NotEmpty
-    @Size(min = 3, max = 100)
-    private String name;
+	@NotNull
+	@NotEmpty
+	@Size(min = 3, max = 100)
+	private String name;
 
-    @NotNull
-    @NotEmpty
-    @Size(min = 3, max = 100)
-    private String surname;
+	@NotNull
+	@NotEmpty
+	@Size(min = 3, max = 100)
+	private String surname;
 
-    @NotNull
-    @NotEmpty
-    @Size(min = 3, max = 50)
-    private String status;
+	@NotNull
+	@NotEmpty
+	@Size(min = 3, max = 50)
+	private String status;
 
-    @NotNull
-    @NotEmpty
-    @Size(min = 3, max = 100)
-    private String picture_profile;
+	@NotNull
+	@NotEmpty
+	@Size(min = 3, max = 100)
+	private String picture_profile;
+
+	@NotNull
+	private Long idd_fed;
 }

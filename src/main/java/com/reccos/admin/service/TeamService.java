@@ -13,4 +13,5 @@ public interface TeamService {
     TeamResponse linkStaduimTeam(Long team_id, Long stadium_id);
     TeamResponse createTeam(TeamRequest teamRequest);
     TeamResponse updateTeam(TeamRequest teamRequest, Long team_id);
+	List<TeamResponse> getTeamsByFederation(Long federation_id);
 }

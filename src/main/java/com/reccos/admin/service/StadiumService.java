@@ -12,4 +12,5 @@ public interface StadiumService {
     StadiumResponse createRefree(StadiumRequest stadiumRequest);
     StadiumResponse createWithTeam(StadiumRequest stadiumRequest, Long team_id);
     StadiumResponse updateRefree(StadiumRequest stadiumRequest, Long stadium_id);
+	List<StadiumResponse> getStadiumByFederation(Long federation_id);
 }

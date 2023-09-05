@@ -11,3 +11,4 @@ CREATE TABLE `federations` (
 );
 
 INSERT INTO FEDERATIONS VALUES(1, 'FEDERAÇÃO KOKAMA DE FUTEBOL', 'FKKF', 'ATIVO', 'federation/default.png', '2023-08-16', '2023-08-16', 1);
+INSERT INTO FEDERATIONS VALUES(2, 'FEDERAÇÃO XANDIANA', 'FEXAN', 'ATIVO', 'federation/default.png', '2023-08-31', '2023-08-31', 2);
