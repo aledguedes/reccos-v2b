@@ -49,6 +49,9 @@ public class TeamRequest {
 
     @NotNull
     private Long registered_federation;
+    
+    @NotNull
+    private Long stadium_id;
 
     @NotNull
     @NotEmpty

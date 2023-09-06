@@ -35,4 +35,4 @@ INSERT INTO STADIUM VALUES(2, 'Estádio Paulo Machado de Carvalho', 'Pacaembu', 
 -- TEAMS
 INSERT INTO TEAMS VALUES(1, 'Lango Lango Futebol Clube', 'Lango Lanho', 'LLFC', 'ATIVO', 'team/default.png', '1919-03-03', 1, '2023-08-16', '2023-08-16', 1, 1);
 INSERT INTO TEAMS VALUES(2, 'Sport Clube Los Lunáticos', 'Lunáticos', 'SCL', 'ATIVO', 'team/default.png', '1919-03-03', 1, '2023-08-16', '2023-08-16', 1, 1);
-INSERT INTO TEAMS VALUES(3, 'Sociedade Esportiva Desvairados', 'Desvairados', 'SED', 'ATIVO', 'team/default.png', '1919-03-03', 1, '2023-08-16', '2023-08-16', 1, 1);
+INSERT INTO TEAMS VALUES(3, 'Sociedade Esportiva Desvairados', 'Desvairados', 'SED', 'ATIVO', 'team/default.png', '1919-03-03', 2, '2023-08-16', '2023-08-16', 2, 2);
