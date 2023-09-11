@@ -18,8 +18,6 @@ public class RefreeResponse {
 
     private Long id;
     private String name;
-    private String rg;
-    private String cpf;
     private String email;
     private String status;
     private String surname;

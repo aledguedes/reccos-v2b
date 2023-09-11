@@ -8,8 +8,10 @@ CREATE TABLE `players` (
     `birth_date` DATETIME NOT NULL,
     `cpf` VARCHAR(100) NOT NULL UNIQUE,
     `rg` VARCHAR(100) NOT NULL,
-    `suspend` BOOLEAN,
-    `position` VARCHAR (100) NOT NULL,
+    `suspended` BOOLEAN NOT NULL,
+    `position` VARCHAR(100) NOT NULL,
     `created_at` DATETIME NOT NULL,
-    `updated_at` DATETIME NOT NULL,
+    `updated_at` DATETIME NOT NULL
 );
+
+INSERT INTO PLAYERS VALUES (1, 'Alexandre Guedes', 'Kokhym', 'ale@gmail.com', 'ATIVO', 'player/default.png', '2023-04-07', '000.000.000-00', '00.000.000-X', false, 'ATACANTE', '2023-09-11', '2023-09-11');

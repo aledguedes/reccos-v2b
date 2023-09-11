@@ -41,8 +41,6 @@ public class RefreeMapperImpl implements RefreeMapper {
                 .status(refree.getStatus())
                 .picture_profile(refree.getPicture_profile())
                 .registered_federation(refree.getRegistered_federation())
-                .cpf(refree.getCpf())
-                .rg(refree.getRg())
                 .federation(refree.getFederation())
 	            .createdAt(refree.getCreatedAt())
 	            .updatedAt(refree.getUpdatedAt())

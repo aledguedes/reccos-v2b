@@ -46,7 +46,7 @@ public class PlayerController {
     }
 
     @PutMapping(value = "/{player_id}")
-    public PlayerResponse updatePlayer(@RequestBody @Valid PlayerRequest playerRequest, @PathVariable Long player_id) {
+    public PlayerResponse updatePlayer(@RequestBody PlayerRequest playerRequest, @PathVariable Long player_id) {
         return playerService.updatePlayer(playerRequest, player_id);
     }
 

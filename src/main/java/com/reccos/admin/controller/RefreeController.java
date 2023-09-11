@@ -46,7 +46,7 @@ public class RefreeController {
     }
 
     @PutMapping(value = "/{refree_id}")
-    public RefreeResponse updateRefree(@RequestBody @Valid RefreeRequest refreeRequest, @PathVariable Long refree_id) {
+    public RefreeResponse updateRefree(@RequestBody RefreeRequest refreeRequest, @PathVariable Long refree_id) {
         return refreeService.updateRefree(refreeRequest, refree_id);
     }
 
