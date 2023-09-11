@@ -7,10 +7,12 @@ import org.springframework.stereotype.Service;
 
 import com.reccos.admin.dto.TeamRequest;
 import com.reccos.admin.dto.TeamResponse;
+import com.reccos.admin.exceptions.core.FederationNotFoundException;
 import com.reccos.admin.exceptions.core.StadiumNotFoundException;
 import com.reccos.admin.exceptions.core.TeamNotFoundException;
 import com.reccos.admin.exceptions.core.UserNotFoundException;
 import com.reccos.admin.mapper.TeamMapper;
+import com.reccos.admin.models.Stadium;
 import com.reccos.admin.repository.FederationRepository;
 import com.reccos.admin.repository.StadiumRepository;
 import com.reccos.admin.repository.TeamRepository;
@@ -40,11 +42,15 @@ public class TeamServiceImpl implements TeamService {
 	public TeamResponse createTeam(TeamRequest teamRequest) {
 		var federation = federationRepository
 				.findById(teamRequest.getRegistered_federation())
-				.orElseThrow(UserNotFoundException::new);
-
-		var stadium = stadiumRepository
-				.findById(teamRequest.getStadium_id())
-				.orElseThrow(UserNotFoundException::new);
+				.orElseThrow(FederationNotFoundException::new);
+		var stadium = new Stadium();
+		if (teamRequest.getStadium_id() != 0 ) {
+			stadium = stadiumRepository
+					.findById(teamRequest.getStadium_id())
+					.orElseThrow(UserNotFoundException::new);
+		} else {
+			stadium = null;
+		}
 
 		var newTeam = teamMapper.toTeam(teamRequest);
 		newTeam.setFederation(federation);
