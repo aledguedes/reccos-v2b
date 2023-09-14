@@ -17,18 +17,18 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class TeamResponse {
 
-    private Long id;
-    private String name;
-    private String status;
-    private String acronym;
-    private String surname;
-    private LocalDateTime birth_date;
-    private String picture_profile;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+	private Long id;
+	private String name;
+	private String status;
+	private String acronym;
+	private String surname;
+	private LocalDateTime birth_date;
+	private String picture_profile;
+	private LocalDateTime createdAt;
+	private LocalDateTime updatedAt;
+	private Stadium stadium;
 
-    @JsonIgnoreProperties({ "owner", "leagues" })
-    private Federation federation;
+	@JsonIgnoreProperties({ "owner", "leagues" })
+	private Federation federation;
 
-    private Stadium stadium;
 }
