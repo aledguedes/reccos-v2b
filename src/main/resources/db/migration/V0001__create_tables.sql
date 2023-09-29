@@ -31,6 +31,8 @@ CREATE TABLE `leagues` (
     `name` VARCHAR(255),
     `dt_start` DATETIME,
     `dt_end` DATETIME,
+    `enrollment_end` DATETIME,
+    `enrollment_start` DATETIME,
     `location` VARCHAR(255),
     `league_system` VARCHAR(255),
     `league_mode` VARCHAR(255),
@@ -39,6 +41,7 @@ CREATE TABLE `leagues` (
     `img_logo` VARCHAR(255),
     `status` VARCHAR(50),
     `federations_id` BIGINT,
+    `turn` BOOLEAN,
     `created_at` DATETIME NOT NULL,
     `updated_at` DATETIME NOT NULL,
     CONSTRAINT fk_federations FOREIGN KEY (federations_id) REFERENCES federations(id)

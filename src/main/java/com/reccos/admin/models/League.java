@@ -40,6 +40,12 @@ public class League extends Auditable {
 
 	@Column(name = "dt_end")
 	private LocalDateTime dt_end;
+	
+	@Column(name = "enrollment_start")
+	private LocalDateTime enrollment_start;
+	
+	@Column(name = "enrollment_end")
+	private LocalDateTime enrollment_end;
 
 	@Column(name = "img_logo")
 	private String img_logo;
@@ -61,6 +67,9 @@ public class League extends Auditable {
 
 	@Column(name = "status")
 	private String status;
+	
+	@Column(name = "turn")
+	private Boolean turn;
 
 	// @ManyToOne(fetch = FetchType.LAZY)
 	// @JoinColumn(name = "federations_id")

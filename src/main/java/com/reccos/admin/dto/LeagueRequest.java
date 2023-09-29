@@ -62,6 +62,9 @@ public class LeagueRequest {
 
     @NotNull
     private String status;
+    
+    @NotNull
+    private Boolean turn;
 
     @NotNull
     @NotEmpty

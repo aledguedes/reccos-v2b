@@ -18,10 +18,13 @@ public class LeagueResponse {
     private String status;
     private String location;
     private String img_logo;
+    private Boolean turn;
     private String league_mode;
     private String league_system;
     private LocalDateTime dt_start;
     private LocalDateTime dt_end;
 	private LocalDateTime createdAt;
 	private LocalDateTime updatedAt;
+	private LocalDateTime enrollment_end;
+	private LocalDateTime enrollment_start;
 }
