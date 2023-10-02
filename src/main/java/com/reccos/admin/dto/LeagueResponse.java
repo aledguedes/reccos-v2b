@@ -1,6 +1,10 @@
 package com.reccos.admin.dto;
 
 import java.time.LocalDateTime;
+import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.reccos.admin.models.Group;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,6 +23,8 @@ public class LeagueResponse {
     private String location;
     private String img_logo;
     private Boolean turn;
+    @JsonIgnoreProperties({"league"})
+    private List<Group> groups;
     private String league_mode;
     private String league_system;
     private LocalDateTime dt_start;

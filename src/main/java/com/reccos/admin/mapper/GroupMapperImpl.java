@@ -1,9 +1,12 @@
 package com.reccos.admin.mapper;
 
+import org.springframework.stereotype.Component;
+
 import com.reccos.admin.dto.GroupRequest;
 import com.reccos.admin.dto.GroupResponse;
 import com.reccos.admin.models.Group;
 
+@Component
 public class GroupMapperImpl implements GroupMapper {
 
     @Override

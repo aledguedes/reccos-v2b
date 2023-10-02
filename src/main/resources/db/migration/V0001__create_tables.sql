@@ -122,3 +122,10 @@ CREATE TABLE `contracts` (
     FOREIGN KEY (team_id) REFERENCES teams (id) ON DELETE CASCADE,
     FOREIGN KEY (player_id) REFERENCES players (id) ON DELETE CASCADE
 );
+
+CREATE TABLE `groups` (
+    `id` BIGINT PRIMARY KEY AUTO_INCREMENT,
+    `name` VARCHAR(255),
+    `leagues_id` BIGINT,
+    FOREIGN KEY (`leagues_id`) REFERENCES `leagues`(`id`) ON DELETE CASCADE
+);

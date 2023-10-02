@@ -1,13 +1,18 @@
 package com.reccos.admin.models;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -25,8 +30,8 @@ import lombok.ToString;
 @ToString(onlyExplicitlyIncluded = true)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
 public class League extends Auditable {
-    
-    @Id
+
+	@Id
 	@ToString.Include
 	@EqualsAndHashCode.Include
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,16 +45,16 @@ public class League extends Auditable {
 
 	@Column(name = "dt_end")
 	private LocalDateTime dt_end;
-	
+
 	@Column(name = "enrollment_start")
 	private LocalDateTime enrollment_start;
-	
+
 	@Column(name = "enrollment_end")
 	private LocalDateTime enrollment_end;
 
 	@Column(name = "img_logo")
 	private String img_logo;
-	
+
 	@Column(name = "location")
 	private String location;
 
@@ -63,16 +68,16 @@ public class League extends Auditable {
 	private Long qt_group;
 
 	@Column(name = "idd_fed")
-    private long idd_fed;
+	private long idd_fed;
 
 	@Column(name = "status")
 	private String status;
-	
+
 	@Column(name = "turn")
 	private Boolean turn;
 
-	// @ManyToOne(fetch = FetchType.LAZY)
-	// @JoinColumn(name = "federations_id")
-	// @JsonIgnore
-	// private Federation federation;
+	@OneToMany(mappedBy = "league", cascade = CascadeType.ALL, orphanRemoval = true)
+	@JsonIgnore
+	@Builder.Default
+	private List<Group> groups = new ArrayList<>();
 }

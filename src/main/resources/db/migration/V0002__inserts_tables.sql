@@ -32,3 +32,5 @@ INSERT INTO TEAMS VALUES(14, 'Sem Idéia Club', 'Sem Idéia', 'SIFC', 'ATIVO', '
 INSERT INTO PLAYERS VALUES (1, 'Alexandre Guedes', 'Kokhym', 'ale@gmail.com', 'ATIVO', 'player/default.png', '2023-04-07', '000.000.000-00', '00.000.000-X', false, 'ATACANTE', '2023-09-11', '2023-09-11');
 
 INSERT INTO CONTRACTS VALUES(1, '2023-09-12', '2024-09-12', 'ATIVO', 1, 1, '2023-09-12', '2023-09-12');
+
+--INSERT INTO GROUPS VALUES(1, 'Grupo 1', 1), (2, 'Grupo 2', 1), (3, 'Grupo 3', 1);

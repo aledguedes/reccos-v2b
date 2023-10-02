@@ -10,7 +10,9 @@ import com.reccos.admin.dto.LeagueResponse;
 import com.reccos.admin.exceptions.core.LeagueNotFoundException;
 import com.reccos.admin.exceptions.core.UserNotFoundException;
 import com.reccos.admin.mapper.LeagueMapper;
+import com.reccos.admin.models.Group;
 import com.reccos.admin.repository.FederationRepository;
+import com.reccos.admin.repository.GroupRepository;
 import com.reccos.admin.repository.LeagueRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -20,6 +22,7 @@ import lombok.RequiredArgsConstructor;
 public class LeagueServiceImpl implements LeagueService {
 
     private final LeagueMapper leagueMapper;
+    private final GroupRepository groupRepository;
     private final LeagueRepository leagueRepository;
     private final FederationRepository federationRepository;
 
@@ -44,7 +47,17 @@ public class LeagueServiceImpl implements LeagueService {
         var federation = federationRepository
                 .findById(leagueRequest.getIdd_fed())
                 .orElseThrow(UserNotFoundException::new);
+
         var leagues = leagueMapper.toLeague(leagueRequest);
+
+        long qtGrupos = leagueRequest.getQt_group();
+        for (int i = 0; i < qtGrupos; i++) {
+            var grupo = new Group();
+            grupo.setName("Grupo " + (i + 1));
+            grupo.setLeague(leagues);
+            groupRepository.save(grupo);
+        }
+
         federation.getLeagues().add(leagues);
         federationRepository.save(federation);
         return leagueMapper.toLeagueResponse(leagues);

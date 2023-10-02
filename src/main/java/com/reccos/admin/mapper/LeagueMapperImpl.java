@@ -16,16 +16,16 @@ public class LeagueMapperImpl implements LeagueMapper {
         }
         return League.builder()
                 .name(leagueRequest.getName())
+                .turn(leagueRequest.getTurn())
+                .dt_end(leagueRequest.getDt_end())
                 .status(leagueRequest.getStatus())
+                .idd_fed(leagueRequest.getIdd_fed())
+                .qt_group(leagueRequest.getQt_group())
                 .location(leagueRequest.getLocation())
                 .img_logo(leagueRequest.getImg_logo())
                 .dt_start(leagueRequest.getDt_start())
-                .turn(leagueRequest.getTurn())
-                .dt_end(leagueRequest.getDt_end())
-                .league_system(leagueRequest.getLeague_system())
                 .league_mode(leagueRequest.getLeague_mode())
-                .qt_group(leagueRequest.getQt_group())
-                .idd_fed(leagueRequest.getIdd_fed())
+                .league_system(leagueRequest.getLeague_system())
                 .build();
     }
 
@@ -38,18 +38,19 @@ public class LeagueMapperImpl implements LeagueMapper {
         return LeagueResponse.builder()
         		.id(league.getId())
                 .name(league.getName())
-                .location(league.getLocation())
+                .turn(league.getTurn())
+                .dt_end(league.getDt_end())
                 .status(league.getStatus())
+                .groups(league.getGroups())
+                .location(league.getLocation())
                 .img_logo(league.getImg_logo())
                 .dt_start(league.getDt_start())
-                .dt_end(league.getDt_end())
-                .enrollment_end(league.getEnrollment_end())
-                .enrollment_start(league.getEnrollment_start())
-                .turn(league.getTurn())
-                .league_system(league.getLeague_system())
-                .league_mode(league.getLeague_mode())
                 .createdAt(league.getCreatedAt())
                 .updatedAt(league.getUpdatedAt())
+                .league_mode(league.getLeague_mode())
+                .league_system(league.getLeague_system())
+                .enrollment_end(league.getEnrollment_end())
+                .enrollment_start(league.getEnrollment_start())
                 .build();
     }
 
