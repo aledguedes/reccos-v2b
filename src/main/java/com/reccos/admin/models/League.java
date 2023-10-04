@@ -75,6 +75,9 @@ public class League extends Auditable {
 
 	@Column(name = "turn")
 	private Boolean turn;
+	
+	@Column(name = "num_teams")
+	private Integer num_teams;
 
 	@OneToMany(mappedBy = "league", cascade = CascadeType.ALL, orphanRemoval = true)
 	@JsonIgnore

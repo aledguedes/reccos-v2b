@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.reccos.admin.dto.GroupRequest;
 import com.reccos.admin.dto.GroupResponse;
+import com.reccos.admin.dto.TeamGroupRequest;
 import com.reccos.admin.service.GroupService;
 
 import jakarta.validation.Valid;
@@ -41,7 +42,7 @@ public class GroupController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public GroupResponse createGroup(@RequestBody @Valid GroupRequest groupRequest) {
+    public List<GroupResponse> createGroup(List<GroupRequest> groupRequest) {
         return groupService.createGroup(groupRequest);
     }
 
@@ -54,6 +55,12 @@ public class GroupController {
     @DeleteMapping(value = "/{group_id}")
     public void deleteGroup(@PathVariable Long group_id) {
         groupService.deleteGroup(group_id);
+    }
+
+    @PostMapping(value = "/add-teams")
+    @ResponseStatus(HttpStatus.CREATED)
+    public String updateGroupByTeams(@RequestBody List<TeamGroupRequest> teamGroupRequest) {
+        return groupService.updateGroupByTeams(teamGroupRequest);
     }
 
 }

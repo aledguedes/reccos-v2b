@@ -7,7 +7,7 @@ VALUES
 INSERT INTO FEDERATIONS VALUES(1, 'FEDERAÇÃO KOKAMA DE FUTEBOL', 'FKKF', 'ATIVO', 'federation/default.png', '2023-08-16', '2023-08-16', 1);
 INSERT INTO FEDERATIONS VALUES(2, 'FEDERAÇÃO XANDIANA', 'FEXAN', 'ATIVO', 'federation/default.png', '2023-08-31', '2023-08-31', 2);
 
-INSERT INTO LEAGUES VALUES(1, 'LIGA_A', '2023-09-01', '2024-09-01', '2024-09-01', '2024-09-01', 'Batatais/SP', 'Pontos Corridos', 'Canindé', 1, 1, 'league/default.png', 'Em preparação', 1, true, '2023-08-16', '2023-08-16');
+INSERT INTO LEAGUES VALUES(1, 'LIGA_A', '2023-09-01', '2024-09-01', '2024-09-01', '2024-09-01', 'Batatais/SP', 'Pontos Corridos', 'Canindé', 1, 1, 'league/default.png', 'Em preparação', 1, true, '2023-08-16', '2023-08-16', 14);
 
 INSERT INTO REFREES VALUES (1, 'Oscar Roberto Goddoy', 'Goddoy', 'ATIVO', 'orob_goddoy@mail.com', 'refree/default.png', '1980-03-03', 1, '592.633.090-43', '282838132', '2023-08-16', '2023-08-16', 1);
 
@@ -33,4 +33,4 @@ INSERT INTO PLAYERS VALUES (1, 'Alexandre Guedes', 'Kokhym', 'ale@gmail.com', 'A
 
 INSERT INTO CONTRACTS VALUES(1, '2023-09-12', '2024-09-12', 'ATIVO', 1, 1, '2023-09-12', '2023-09-12');
 
---INSERT INTO GROUPS VALUES(1, 'Grupo 1', 1), (2, 'Grupo 2', 1), (3, 'Grupo 3', 1);
+INSERT INTO GROUPS VALUES(1, 'Grupo 1', 1), (2, 'Grupo 2', 1), (3, 'Grupo 3', 1);

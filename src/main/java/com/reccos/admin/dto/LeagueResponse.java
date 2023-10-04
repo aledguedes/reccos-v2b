@@ -16,19 +16,20 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class LeagueResponse {
-    
+
 	private Long id;
-    private String name;
-    private String status;
-    private String location;
-    private String img_logo;
-    private Boolean turn;
-    @JsonIgnoreProperties({"league"})
-    private List<Group> groups;
-    private String league_mode;
-    private String league_system;
-    private LocalDateTime dt_start;
-    private LocalDateTime dt_end;
+	private String name;
+	private Boolean turn;
+	private String status;
+	private String location;
+	private String img_logo;
+	private Integer num_teams;
+	@JsonIgnoreProperties({ "stadium", "leagues", "federation", "league" })
+	private List<Group> groups;
+	private String league_mode;
+	private String league_system;
+	private LocalDateTime dt_start;
+	private LocalDateTime dt_end;
 	private LocalDateTime createdAt;
 	private LocalDateTime updatedAt;
 	private LocalDateTime enrollment_end;

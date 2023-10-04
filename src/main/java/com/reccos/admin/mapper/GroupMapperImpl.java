@@ -29,6 +29,7 @@ public class GroupMapperImpl implements GroupMapper {
         return GroupResponse.builder()
         		.id(group.getId())
                 .name(group.getName())
+                .teams(group.getTeams())
                 .build();
     }
 

@@ -44,6 +44,7 @@ CREATE TABLE `leagues` (
     `turn` BOOLEAN,
     `created_at` DATETIME NOT NULL,
     `updated_at` DATETIME NOT NULL,
+    `num_teams` INTEGER NOT NULL,
     CONSTRAINT fk_federations FOREIGN KEY (federations_id) REFERENCES federations(id)
 );
 
@@ -128,4 +129,12 @@ CREATE TABLE `groups` (
     `name` VARCHAR(255),
     `leagues_id` BIGINT,
     FOREIGN KEY (`leagues_id`) REFERENCES `leagues`(`id`) ON DELETE CASCADE
+);
+
+CREATE TABLE `group_teams` (
+    `group_id` BIGINT NOT NULL,
+    `team_id` BIGINT NOT NULL,
+    PRIMARY KEY (`group_id`, `team_id`),
+    FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`),
+    FOREIGN KEY (`team_id`) REFERENCES `teams` (`id`)
 );

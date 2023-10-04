@@ -65,6 +65,9 @@ public class LeagueRequest {
     
     @NotNull
     private Boolean turn;
+    
+    @NotNull
+	private Integer num_teams;
 
     @NotNull
     @NotEmpty

@@ -26,6 +26,7 @@ public class LeagueMapperImpl implements LeagueMapper {
                 .dt_start(leagueRequest.getDt_start())
                 .league_mode(leagueRequest.getLeague_mode())
                 .league_system(leagueRequest.getLeague_system())
+                .num_teams(leagueRequest.getNum_teams())
                 .build();
     }
 
@@ -51,6 +52,7 @@ public class LeagueMapperImpl implements LeagueMapper {
                 .league_system(league.getLeague_system())
                 .enrollment_end(league.getEnrollment_end())
                 .enrollment_start(league.getEnrollment_start())
+                .num_teams(league.getNum_teams())
                 .build();
     }
 

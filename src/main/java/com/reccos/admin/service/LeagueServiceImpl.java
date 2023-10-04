@@ -49,18 +49,20 @@ public class LeagueServiceImpl implements LeagueService {
                 .orElseThrow(UserNotFoundException::new);
 
         var leagues = leagueMapper.toLeague(leagueRequest);
+        
+        var createdLeague = leagueRepository.save(leagues);
 
-        long qtGrupos = leagueRequest.getQt_group();
+        long qtGrupos = createdLeague.getQt_group();
         for (int i = 0; i < qtGrupos; i++) {
             var grupo = new Group();
             grupo.setName("Grupo " + (i + 1));
-            grupo.setLeague(leagues);
+            grupo.setLeague(createdLeague);
             groupRepository.save(grupo);
         }
 
         federation.getLeagues().add(leagues);
         federationRepository.save(federation);
-        return leagueMapper.toLeagueResponse(leagues);
+        return leagueMapper.toLeagueResponse(createdLeague);
     }
 
     @Override
@@ -68,7 +70,7 @@ public class LeagueServiceImpl implements LeagueService {
         var league = leagueRepository
                 .findById(league_id)
                 .orElseThrow(LeagueNotFoundException::new);
-        BeanUtils.copyProperties(leagueRequest, league, "id", "idd_fed", "qt_group", "createdAt", "updatedAt");
+        BeanUtils.copyProperties(leagueRequest, league, "id", "idd_fed", "num_teams", "qt_group", "createdAt", "updatedAt");
         var updatedLeague = leagueRepository.save(league);
         return leagueMapper.toLeagueResponse(updatedLeague);
     }
