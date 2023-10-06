@@ -29,7 +29,6 @@ public class FederationResponse {
 	private User owner;
 	@JsonIgnore
 	private List<Team> teams;
-	@JsonIgnore
 	private List<League> leagues;
 	private LocalDateTime createdAt;
 	private LocalDateTime updatedAt;
