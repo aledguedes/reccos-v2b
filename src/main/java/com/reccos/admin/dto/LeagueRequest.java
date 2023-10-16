@@ -73,4 +73,6 @@ public class LeagueRequest {
     @NotEmpty
     @Size(min = 3, max = 225)
     private String img_logo;
+
+    private String scoreName;
 }

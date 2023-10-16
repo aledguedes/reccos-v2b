@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.reccos.admin.dto.StadiumRequest;
 import com.reccos.admin.dto.StadiumResponse;
+import com.reccos.admin.exceptions.core.FederationNotFoundException;
 import com.reccos.admin.exceptions.core.StadiumNotFoundException;
-import com.reccos.admin.exceptions.core.UserNotFoundException;
 import com.reccos.admin.mapper.StadiumMapper;
 import com.reccos.admin.repository.FederationRepository;
 import com.reccos.admin.repository.StadiumRepository;
@@ -40,7 +40,7 @@ public class StadiumServiceImpl implements StadiumService {
 	public StadiumResponse createRefree(StadiumRequest stadiumRequest) {
 		var federation = federationRepository
                 .findById(stadiumRequest.getIdd_fed())
-                .orElseThrow(UserNotFoundException::new);
+                .orElseThrow(FederationNotFoundException::new);
 		var stadium = stadiumMapper.toStadium(stadiumRequest);
         federation.getStadium().add(stadium);
 		return stadiumMapper.toStadiumResponse(stadiumRepository.save(stadium));
@@ -50,7 +50,7 @@ public class StadiumServiceImpl implements StadiumService {
 	public StadiumResponse createWithTeam(StadiumRequest stadiumRequest, Long team_id) {
 		var federation = federationRepository
                 .findById(stadiumRequest.getIdd_fed())
-                .orElseThrow(UserNotFoundException::new);
+                .orElseThrow(FederationNotFoundException::new);
 		var team = teamRepository.findById(team_id).orElseThrow(StadiumNotFoundException::new);
 		var stadium = stadiumMapper.toStadium(stadiumRequest);
 		federation.getStadium().add(stadium);
@@ -76,7 +76,7 @@ public class StadiumServiceImpl implements StadiumService {
 	public List<StadiumResponse> getStadiumByFederation(Long federation_id) {
 		var federation = federationRepository
                 .findById(federation_id)
-                .orElseThrow(UserNotFoundException::new);
+                .orElseThrow(FederationNotFoundException::new);
 		return stadiumRepository
 				.findByFederation(federation)
 				.stream()

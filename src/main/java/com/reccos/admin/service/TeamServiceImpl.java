@@ -10,7 +10,6 @@ import com.reccos.admin.dto.TeamResponse;
 import com.reccos.admin.exceptions.core.FederationNotFoundException;
 import com.reccos.admin.exceptions.core.StadiumNotFoundException;
 import com.reccos.admin.exceptions.core.TeamNotFoundException;
-import com.reccos.admin.exceptions.core.UserNotFoundException;
 import com.reccos.admin.mapper.TeamMapper;
 import com.reccos.admin.models.Stadium;
 import com.reccos.admin.repository.FederationRepository;
@@ -47,7 +46,7 @@ public class TeamServiceImpl implements TeamService {
 		if (teamRequest.getStadium_id() != 0 ) {
 			stadium = stadiumRepository
 					.findById(teamRequest.getStadium_id())
-					.orElseThrow(UserNotFoundException::new);
+					.orElseThrow(StadiumNotFoundException::new);
 		} else {
 			stadium = null;
 		}
@@ -83,7 +82,7 @@ public class TeamServiceImpl implements TeamService {
 
 	@Override
 	public List<TeamResponse> getTeamsByFederation(Long federation_id) {
-		var federation = federationRepository.findById(federation_id).orElseThrow(UserNotFoundException::new);
+		var federation = federationRepository.findById(federation_id).orElseThrow(FederationNotFoundException::new);
 		return teamRepository.findByFederation(federation).stream().map(teamMapper::toTeamResponse).toList();
 	}
 

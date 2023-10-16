@@ -4,7 +4,7 @@ spring:
   web:
     locale: pt_BR
   profiles:
-    active: ${HYPERPROF_PROFILE:dev}
+    active: ${HYPERPROF_PROFILE:h2}
   jpa:
     hibernate:
       ddl-auto: none

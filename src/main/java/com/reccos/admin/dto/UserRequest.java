@@ -72,7 +72,6 @@ public class UserRequest {
 	@Size(min = 6, max = 255)
 	private String password;
 
-	@Size(min = 6, max = 255)
 	private String passwordConfirmation;
 
 }

@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.reccos.admin.dto.RefreeRequest;
 import com.reccos.admin.dto.RefreeResponse;
+import com.reccos.admin.exceptions.core.FederationNotFoundException;
 import com.reccos.admin.exceptions.core.RefreeNotFoundException;
-import com.reccos.admin.exceptions.core.UserNotFoundException;
 import com.reccos.admin.mapper.RefreeMapper;
 import com.reccos.admin.repository.FederationRepository;
 import com.reccos.admin.repository.RefreeRepository;
@@ -42,7 +42,7 @@ public class RefreeServiceImpl implements RefreeService {
     public RefreeResponse createRefree(RefreeRequest refreeRequest) {
     	var federation = federationRepository
                 .findById(refreeRequest.getRegistered_federation())
-                .orElseThrow(UserNotFoundException::new);
+                .orElseThrow(FederationNotFoundException::new);
         var newRefree = refreeMapper.toRefree(refreeRequest);
         newRefree.setFederation(federation);
         var createdRefree = refreeRepository.save(newRefree);

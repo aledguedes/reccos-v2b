@@ -42,7 +42,7 @@ public class GroupController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public List<GroupResponse> createGroup(List<GroupRequest> groupRequest) {
+    public List<GroupResponse> createGroup(@RequestBody @Valid List<GroupRequest> groupRequest) {
         return groupService.createGroup(groupRequest);
     }
 

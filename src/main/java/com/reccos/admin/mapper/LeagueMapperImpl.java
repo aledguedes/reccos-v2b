@@ -53,6 +53,7 @@ public class LeagueMapperImpl implements LeagueMapper {
                 .enrollment_end(league.getEnrollment_end())
                 .enrollment_start(league.getEnrollment_start())
                 .num_teams(league.getNum_teams())
+                .score(league.getScore())
                 .build();
     }
 

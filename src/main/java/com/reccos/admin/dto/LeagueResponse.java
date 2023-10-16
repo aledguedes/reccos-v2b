@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.reccos.admin.models.Group;
+import com.reccos.admin.models.Score;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,6 +20,7 @@ public class LeagueResponse {
 
 	private Long id;
 	private String name;
+	private Score score;
 	private Boolean turn;
 	private String status;
 	private String location;
