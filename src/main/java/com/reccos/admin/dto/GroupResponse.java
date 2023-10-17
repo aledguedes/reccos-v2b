@@ -1,5 +1,6 @@
 package com.reccos.admin.dto;
 
+import java.time.LocalDateTime;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -20,4 +21,6 @@ public class GroupResponse {
 	private String name;
 	@JsonIgnoreProperties({ "federation", "stadium" })
 	private Set<Team> teams;
+	private LocalDateTime createdAt;
+	private LocalDateTime updatedAt;
 }

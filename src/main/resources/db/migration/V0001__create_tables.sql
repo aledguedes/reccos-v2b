@@ -26,6 +26,16 @@ CREATE TABLE `federations` (
     CONSTRAINT fk_owner FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
 );
 
+CREATE TABLE `scores` (
+    `id` BIGINT PRIMARY KEY AUTO_INCREMENT,
+    `name` VARCHAR(255),
+    `winner` INTEGER,
+    `loser` INTEGER,
+    `draw` INTEGER,
+    `created_at` DATETIME NOT NULL,
+    `updated_at` DATETIME NOT NULL
+);
+
 CREATE TABLE `leagues` (
     `id` BIGINT PRIMARY KEY AUTO_INCREMENT,
     `name` VARCHAR(255),
@@ -45,7 +55,9 @@ CREATE TABLE `leagues` (
     `created_at` DATETIME NOT NULL,
     `updated_at` DATETIME NOT NULL,
     `num_teams` INTEGER NOT NULL,
-    CONSTRAINT fk_federations FOREIGN KEY (federations_id) REFERENCES federations(id)
+    `scores_id` BIGINT,
+    CONSTRAINT fk_federations FOREIGN KEY (federations_id) REFERENCES federations(id),
+    CONSTRAINT fk_scores FOREIGN KEY (scores_id) REFERENCES scores(id)
 );
 
 CREATE TABLE `stadium` (
@@ -124,10 +136,12 @@ CREATE TABLE `contracts` (
     FOREIGN KEY (player_id) REFERENCES players (id) ON DELETE CASCADE
 );
 
-CREATE TABLE `groups` (
+CREATE TABLE `tb_groups` (
     `id` BIGINT PRIMARY KEY AUTO_INCREMENT,
     `name` VARCHAR(255),
     `leagues_id` BIGINT,
+    `created_at` DATETIME NOT NULL,
+    `updated_at` DATETIME NOT NULL,
     FOREIGN KEY (`leagues_id`) REFERENCES `leagues`(`id`) ON DELETE CASCADE
 );
 
@@ -135,6 +149,6 @@ CREATE TABLE `group_teams` (
     `group_id` BIGINT NOT NULL,
     `team_id` BIGINT NOT NULL,
     PRIMARY KEY (`group_id`, `team_id`),
-    FOREIGN KEY (`group_id`) REFERENCES `groups` (`id`),
+    FOREIGN KEY (`group_id`) REFERENCES `tb_groups` (`id`),
     FOREIGN KEY (`team_id`) REFERENCES `teams` (`id`)
 );

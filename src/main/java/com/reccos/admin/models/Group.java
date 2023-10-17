@@ -30,10 +30,10 @@ import lombok.ToString;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "groups")
+@Table(name = "tb_groups")
 @ToString(onlyExplicitlyIncluded = true)
 @EqualsAndHashCode(onlyExplicitlyIncluded = true, callSuper = false)
-public class Group {
+public class Group extends Auditable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

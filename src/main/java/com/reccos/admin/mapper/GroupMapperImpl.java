@@ -30,6 +30,8 @@ public class GroupMapperImpl implements GroupMapper {
         		.id(group.getId())
                 .name(group.getName())
                 .teams(group.getTeams())
+	            .createdAt(group.getCreatedAt())
+	            .updatedAt(group.getUpdatedAt())
                 .build();
     }
 

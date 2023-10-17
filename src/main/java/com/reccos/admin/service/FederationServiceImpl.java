@@ -45,6 +45,8 @@ public class FederationServiceImpl implements FederationService {
         var newFederation = federationMapper.toFederation(federationRequest);
         newFederation.setOwner(user);
         var createdFederation = federationReporitory.save(newFederation);
+        int i = createdFederation.getId().intValue();
+        user.setFederation(i);
         return federationMapper.toFederationResponse(createdFederation);
     }
 
