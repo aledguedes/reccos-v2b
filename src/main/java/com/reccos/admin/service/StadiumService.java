@@ -7,10 +7,10 @@ import com.reccos.admin.dto.StadiumResponse;
 
 public interface StadiumService {
     List<StadiumResponse> listAll();
-    void deleteRefree(Long stadium_id);
+    void deleteStadium(Long stadium_id);
     StadiumResponse StadiumById(Long stadium_id);
-    StadiumResponse createRefree(StadiumRequest stadiumRequest);
+    StadiumResponse createStadium(StadiumRequest stadiumRequest);
     StadiumResponse createWithTeam(StadiumRequest stadiumRequest, Long team_id);
-    StadiumResponse updateRefree(StadiumRequest stadiumRequest, Long stadium_id);
+    StadiumResponse updateStadium(StadiumRequest stadiumRequest, Long stadium_id);
 	List<StadiumResponse> getStadiumByFederation(Long federation_id);
 }

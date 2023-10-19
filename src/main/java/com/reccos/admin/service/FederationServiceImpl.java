@@ -20,12 +20,12 @@ import lombok.RequiredArgsConstructor;
 public class FederationServiceImpl implements FederationService {
 
     private final FederationMapper federationMapper;
-    private final FederationRepository federationReporitory;
+    private final FederationRepository federationRepository;
     private final UserRepository userRepository;
 
     @Override
     public List<FederationResponse> listAll() {
-        return federationReporitory.findAll()
+        return federationRepository.findAll()
                 .stream()
                 .map(federationMapper::toFederationResponse)
                 .toList();
@@ -33,7 +33,7 @@ public class FederationServiceImpl implements FederationService {
 
     @Override
     public FederationResponse federationById(Long federationId) {
-        return federationReporitory.findById(federationId)
+        return federationRepository.findById(federationId)
                 .map(federationMapper::toFederationResponse)
                 .orElseThrow(FederationNotFoundException::new);
     }
@@ -44,23 +44,23 @@ public class FederationServiceImpl implements FederationService {
                 .orElseThrow(UserNotFoundException::new);
         var newFederation = federationMapper.toFederation(federationRequest);
         newFederation.setOwner(user);
-        var createdFederation = federationReporitory.save(newFederation);
-        int i = createdFederation.getId().intValue();
-        user.setFederation(i);
+        var createdFederation = federationRepository.save(newFederation);
+        user.setFederation(createdFederation.getId().intValue());
+        userRepository.save(user);
         return federationMapper.toFederationResponse(createdFederation);
     }
 
     @Override
     public FederationResponse updateFederation(FederationRequest federationRequest, Long federation_id) {
-    	var federation = federationReporitory.findById(federation_id)
+    	var federation = federationRepository.findById(federation_id)
                 .orElseThrow(FederationNotFoundException::new);
         BeanUtils.copyProperties(federationRequest, federation, "id", "email", "createdAt", "updatedAt");
-        var federacaoAtualizada = federationReporitory.save(federation);
+        var federacaoAtualizada = federationRepository.save(federation);
         return federationMapper.toFederationResponse(federacaoAtualizada);
     }
 
     @Override
     public void excluirProfessorLogado(Long federation_id) {
-        federationReporitory.deleteById(federation_id);
+        federationRepository.deleteById(federation_id);
     }
 }

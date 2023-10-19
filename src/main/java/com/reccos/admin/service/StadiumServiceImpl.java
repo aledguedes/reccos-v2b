@@ -37,12 +37,12 @@ public class StadiumServiceImpl implements StadiumService {
 	}
 
 	@Override
-	public StadiumResponse createRefree(StadiumRequest stadiumRequest) {
+	public StadiumResponse createStadium(StadiumRequest stadiumRequest) {
 		var federation = federationRepository
                 .findById(stadiumRequest.getIdd_fed())
                 .orElseThrow(FederationNotFoundException::new);
 		var stadium = stadiumMapper.toStadium(stadiumRequest);
-        federation.getStadium().add(stadium);
+		stadium.setFederation(federation);
 		return stadiumMapper.toStadiumResponse(stadiumRepository.save(stadium));
 	}
 
@@ -60,7 +60,7 @@ public class StadiumServiceImpl implements StadiumService {
 	}
 
 	@Override
-	public StadiumResponse updateRefree(StadiumRequest stadiumRequest, Long stadium_id) {
+	public StadiumResponse updateStadium(StadiumRequest stadiumRequest, Long stadium_id) {
 		var stadium = stadiumRepository.findById(stadium_id).orElseThrow(StadiumNotFoundException::new);
 		BeanUtils.copyProperties(stadiumRequest, stadium, "id", "createdAt", "updatedAt");
 		var updatedstadium = stadiumRepository.save(stadium);
@@ -68,7 +68,7 @@ public class StadiumServiceImpl implements StadiumService {
 	}
 
 	@Override
-	public void deleteRefree(Long stadium_id) {
+	public void deleteStadium(Long stadium_id) {
 		stadiumRepository.deleteById(stadium_id);
 	}
 

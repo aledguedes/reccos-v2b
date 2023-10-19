@@ -6,3 +6,5 @@ VALUES
 
 INSERT INTO FEDERATIONS VALUES(1, 'FEDERAÇÃO KOKAMA DE FUTEBOL', 'FKKF', 'ATIVO', 'federation/default.png', '2023-08-16', '2023-08-16', 1);
 INSERT INTO FEDERATIONS VALUES(2, 'FEDERAÇÃO XANDIANA', 'FEXAN', 'ATIVO', 'federation/default.png', '2023-08-31', '2023-08-31', 2);
+
+INSERT INTO LEAGUES VALUES(1, 'LIGA_A', '2023-09-01', '2024-09-01', '2024-09-01', '2024-09-01', 'Batatais/SP', 'Pontos Corridos', 'Canindé', 1, 1, 'league/default.png', 'Em preparação', 1, true, '2023-08-16', '2023-08-16', 14, null);

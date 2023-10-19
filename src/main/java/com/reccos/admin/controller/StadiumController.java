@@ -46,8 +46,8 @@ public class StadiumController {
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public StadiumResponse createRefree(@RequestBody @Valid final StadiumRequest stadiumRequest) {
-		return stadiumService.createRefree(stadiumRequest);
+	public StadiumResponse createStadium(@RequestBody @Valid final StadiumRequest stadiumRequest) {
+		return stadiumService.createStadium(stadiumRequest);
 	}
 
 	@PostMapping(value = "/link_team/{team_id}")
@@ -57,15 +57,15 @@ public class StadiumController {
 	}
 
 	@PutMapping(value = "/{stadium_id}")
-	public StadiumResponse updateRefree(@RequestBody @Valid final StadiumRequest stadiumRequest,
+	public StadiumResponse updateStadium(@RequestBody @Valid final StadiumRequest stadiumRequest,
 			@PathVariable Long stadium_id) {
-		return stadiumService.updateRefree(stadiumRequest, stadium_id);
+		return stadiumService.updateStadium(stadiumRequest, stadium_id);
 	}
 
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	@DeleteMapping(value = "/{stadium_id}")
-	public void deleteRefree(@PathVariable Long stadium_id) {
-		stadiumService.deleteRefree(stadium_id);
+	public void deleteStadium(@PathVariable Long stadium_id) {
+		stadiumService.deleteStadium(stadium_id);
 	}
 
 }
